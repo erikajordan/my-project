@@ -1,0 +1,832 @@
+:root{
+    --light-blue: #3498DB;
+    --blue: #2980B9;
+    --dark-blue: #34495E;
+    --white: #ECF0F1;
+    --light-shadow: 0px 0px 20px 0px rgba(0,0,0,0.3);
+    --emerald: #2ecc71;
+    --nephritis: #27ae60;
+    --turqoise: #1abc9c;
+    --green-sea: #16a085;
+    --carrot: #e67e22;
+}
+html,body{
+    margin: 0;
+    box-sizing: border-box;
+    overflow-y: hidden;
+    font-family: Roboto,sans-serif;
+    background-color: var(--white);}
+/* Wrapper */
+.wrapper{
+    display: grid;
+    grid-template-columns: minmax(200px,18%) 100px auto;
+    height: 100vh;
+    width: 100vw;
+}
+/* sidebar */
+.sidebar{
+    background-color: var(--light-blue);
+    display: grid;
+    grid-template-rows: 40% 1fr;
+}
+.sidebar .button-section{
+    display: flex;
+    flex-direction: column  ;
+    align-items: center;
+}
+.sidebar .button-section .nav-button{
+    height: 50px;
+    width: 90%;
+    background-color: var(--white);
+    margin-bottom: 35px;
+    display: grid;
+    place-items: center;
+    border-radius: 50px;
+    border: none;
+    font-weight: 700;
+    font-size: 18px;
+    transition: ease 0.4s;
+}
+.nav-button:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    /* color: var(--white); */
+    box-shadow: var(--light-shadow);
+}
+#nb1{
+    background-color: var(--turqoise);
+}
+.sidebar .logo-section{
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.sidebar .logo-section .logo{
+    height: 180px;
+    border-bottom: solid 3px var(--white);
+    margin-bottom: 0;
+}
+.sidebar .logo-section h4{
+    margin-top: 0;
+    font-size: 25px;
+}
+/* content-panel */
+.content-panel{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.panel-joborder, .panel-inventory, .panel-employee, .panel-schedules, .panel-installation{
+    height: 95%;
+    width: 95%;
+    position: relative;
+    animation-name: topslide;
+    animation-duration: 0.4s;
+}
+/* button-section */
+.button-div{
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+    #joborder-search{
+        width: 60%;
+        height: 40px;
+        border: solid 3px #7f8c8d;
+        border: none;
+        border-radius: 50px;
+        padding-left: 20px;
+        margin-bottom: 20px;
+    }
+    #joborder-search::placeholder{
+        font-size: 15px;
+    }
+
+     .filter-buttons{
+        height: 40px;
+        width: 140px;
+        border: none;
+        border-radius: 20px 20px 0 0 ;
+        background-color: var(--dark-blue);
+        color: var(--white);
+        font-weight: 700;
+        cursor: pointer;
+        transition: ease 0.4s;
+    }
+     .filter-buttons:hover{
+        background-color: var(--light-blue);
+    }
+
+/* table seciton */
+.table-div{
+    height: 70%;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 50px;
+}
+.button-div .add-button{
+    width: 150px;
+    padding: 10px 20px;
+    display: grid;
+    place-items: center;
+    color: var(--white);
+    font-size: 15px;
+    border-radius: 100px;
+    transition: ease 0.4s;
+    cursor: pointer;
+    margin: 10px;
+    background-color: var(--emerald);
+    margin-bottom: 20px;
+}
+
+.button-div .add-button:hover{
+    transform: scale(1.1);
+    background-color: var(--nephritis);
+    box-shadow: var(--light-shadow);
+}
+
+/* Panel Table */
+.joborder-table, .inventory-table, .employee-table, .schedules-table, .installation-table{
+    width: 100%;
+    table-layout: fixed ;
+    border-collapse: collapse;
+}
+th{
+    text-align: center;
+    color: var(--white);
+}
+tr{
+    text-align: center;
+    cursor: pointer;
+    height: 40px;
+}
+tr:hover{
+    background-color: #95a5a6 ;
+}
+.table-heading{
+    height: 50px;
+    background-color: var(--light-blue);
+    border-radius: 20px;
+}
+
+#inventory-table{
+    height: 90%;
+    overflow-y: auto;
+}
+#inventory-logs-table{
+    height: 70%;
+    overflow-y: auto;
+}
+/* FOMRS */
+.back-filter{
+    position: absolute;
+    display: grid;
+    place-items: center;
+    height: 100vh;
+    width: 100vw;
+    overflow: auto;
+    background-color: rgba(52, 73, 94, 0.5);
+    z-index: 1;
+    padding-top: 20px;
+}
+.back-button, .download-button{
+    position: fixed;
+    height: 100px;
+    width: 100px;
+    top: 20px;
+    left: 20px;
+    background-color: var(--white);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    box-shadow: var(--light-shadow);
+    transition: ease 0.4s;
+    cursor: pointer;
+}
+.download-button{
+    top: 20%;
+}
+.back-button img{
+    height: 70%;
+}
+.download-button img{
+    height: 10%;
+}
+.back-button:hover, .download-button:hover{
+    background-color: var(--carrot);
+    transform: scale(1.1);
+}
+.add-joborder{
+    height: auto;
+    width: 55%;
+    background-color: var(--white);
+    padding: 0;
+    animation-name: zoom;
+    animation-duration: 0.4s;
+    box-shadow: var(--light-shadow);
+    /* overflow-x: hidden; */
+}
+.add-joborder i{
+    font-size: 20px;
+}
+.heading{
+    color: var(--white);
+    width: 100%;
+    background-color: var(--light-blue);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.heading .text h4{
+    font-size: 40px;
+    margin: 20px 0 0px 40px;
+}
+.heading .text p{
+    margin: 0 0 10px 40px;
+}
+.heading img{
+    height: 110px;
+    margin-right: 40px;
+}
+.wave{
+    height: 5vh;
+    width: 100%;
+}
+.add-joborder .input-section{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: center;
+    color: rgba(0,0,0,0.6);
+}
+.add-joborder .input-section section{
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.add-joborder .input-section section input{
+    border: none;
+    background-color: var(--white);
+    border-bottom: solid 1px black;
+    padding-top: 20px;
+}
+.add-joborder .input-section input::placeholder{
+    font-size: 18px;
+}
+
+    .add-joborder .input-section #input1, .add-joborder .input-section #input3{
+        width: 50%;
+    }
+    .add-joborder .input-section #input2, .add-joborder .input-section #input4{
+        width: 20%;
+    }
+    .add-joborder .input-section .input5{
+        padding: 20px 0 0 20px;
+        width: 30%;
+        border-radius: 50px;
+        border: solid 1px black;
+        background-color: var(--white);
+    }
+    .add-joborder .input-section #input6{
+        width: 40%;
+    }
+    .add-joborder .input-section #input7,.add-joborder .input-section #input8,.add-joborder .input-section #input9,.add-joborder .input-section #input10{
+        width: 35%;
+    }
+    .add-joborder .input-section .bottom{
+        text-align: left;
+        font-size: 20px;
+        width: 75%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .add-joborder .input-section .bottom > div{
+        width: 40%
+    }
+    .add-joborder .input-section .bottom .input11, .add-joborder .input-section .bottom .input12{
+        width: 100%;
+        height: 35px;
+        padding-left: 20px;
+        border-radius: 50px;
+        background-color: transparent;
+        margin-top: 10px;
+    }
+    
+
+.add-joborder .submit, .add-employee .submit, .add-inventory .submit, .add-inventory .submit{
+    margin-top: 20px;
+    margin-bottom: 70px;
+    width: 25%;
+    height: 50px;
+    border-radius: 50px;
+    font-size: 20px;
+    font-weight: 700;
+    border: none;
+    background-color: var(--turqoise);
+    color: var(--white);
+    transition: ease 0.4s;
+    cursor: pointer;
+}
+.add-joborder .submit:hover, .add-employee .submit:hover, .add-inventory .submit:hover{
+    transform: scale(1.1);
+    box-shadow: var(--light-shadow);
+}
+
+/* Employee Form  and Inventory Form*/
+.add-employee, .add-inventory{
+    background-color: var(--white);
+    width: 30%;
+    min-height: 70%;
+    box-shadow: var(--light-shadow);
+    animation-name: zoom;
+    animation-duration: 0.4s;
+}
+.add-employee .input-section, .add-inventory .input-section{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-top: 20px;
+    color: rgba(0,0,0,0.6);
+}
+.add-employee .input-section i, .add-inventory .input-section i{
+    font-size: 20px;
+}
+.add-employee .input-section input, .add-inventory .input-section input{
+    border: none;
+    background-color: transparent;
+    border-bottom: solid 1px black;
+    height: 30px;
+    width: 65%;
+}
+.add-employee .input-section section, .add-inventory .input-section section{
+    margin-bottom: 20px;
+}
+.add-employee .input-section input::placeholder, .add-inventory .input-section input::placeholder{
+    font-size: 17px;
+}
+
+#debit-credit{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.debit-credit{
+    background-color: var(--light-blue);
+    margin: 10px;
+    padding-top: 10px;
+    height: 4rem;
+    border-radius: 20px;
+    color: var(--white);
+}
+#debit, #credit{
+    border-color: var(--white);
+    color: var(--white);
+}
+/* ADD INSTALLATION RECORD */
+.add-installation{
+  background-color: var(--white);
+}
+.add-installation .input-section{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: center;
+    color: rgba(0,0,0,0.6);
+}
+.add-installation .input-section section{
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.add-installation .input-section section input{
+    border: none;
+    background-color: var(--white);
+    border-bottom: solid 1px black;
+    padding-top: 20px;
+}
+.add-installation .input-section input::placeholder{
+    font-size: 18px;
+}
+
+    .add-installation .input-section #input1, .add-installation .input-section #input3{
+        width: 50%;
+    }
+    .add-installation .input-section #input2, .add-installation .input-section #input4{
+        width: 20%;
+    }
+    .add-installation .input-section .input5{
+        padding: 20px 0 0 20px;
+        width: 30%;
+        border-radius: 50px;
+        border: solid 1px black;
+        background-color: var(--white);
+    }
+    .add-installation .input-section #input6{
+        width: 40%;
+    }
+    .add-installation .input-section #input7,.add-installation .input-section #input8,.add-installation .input-section #input9,.add-installation .input-section #input10{
+        width: 35%;
+    }
+    .add-installation .input-section .bottom{
+        text-align: left;
+        font-size: 20px;
+        width: 75%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .add-installation .input-section .bottom > div{
+        width: 40%
+    }
+    .add-installation .input-section .bottom .input11, .add-installation .input-section .bottom .input12{
+        width: 100%;
+        height: 35px;
+        padding-left: 20px;
+        border-radius: 50px;
+        background-color: transparent;
+        margin-top: 10px;
+    }
+    
+
+.add-installation .submit, .add-employee .submit, .add-inventory .submit, .add-inventory .submit{
+    margin-top: 20px;
+    margin-bottom: 70px;
+    width: 25%;
+    height: 50px;
+    border-radius: 50px;
+    font-size: 20px;
+    font-weight: 700;
+    border: none;
+    background-color: var(--turqoise);
+    color: var(--white);
+    transition: ease 0.4s;
+    cursor: pointer;
+}
+.add-installation .submit:hover, .add-employee .submit:hover, .add-inventory .submit:hover{
+    transform: scale(1.1);
+    box-shadow: var(--light-shadow);
+}
+.add-installation .bottom{
+  flex-direction: column;
+}
+.add-installation .bottom h4{
+  margin: 5px 0;
+}
+.add-installation .bottom h4.lighter{
+  font-weight: 300;
+}
+.add-installation .input-field{
+  /* display: flex;
+  gap: 5px;
+  align-items: center; */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+.add-installation .input-field input{
+  border: none;
+  background-color: var(--white);
+  border-bottom: solid 1px black;
+  max-width: 80px;
+}
+#update-installation-no{
+  border: none;
+  width: auto;
+  max-width: 50px;
+  margin-top: 15px;
+  outline: none;
+}
+/* Final Add Job Order */
+#final-input13{
+    width: 70%;
+}
+.add-joborder .input-section #final-input1, .add-joborder .input-section #final-input3{
+    width: 50%;
+}
+.add-joborder .input-section #final-input2, .add-joborder .input-section #final-input4{
+    width: 20%;
+}
+.add-joborder .input-section .final-input5{
+    padding: 20px 0 0 20px;
+    width: 30%;
+    border-radius: 50px;
+    border: solid 1px black;
+    background-color: var(--white);
+}
+.add-joborder .input-section #final-input6{
+    width: 40%;
+}
+.add-joborder .input-section #final-input7,.add-joborder .input-section #final-input8,.add-joborder .input-section #final-input9,.add-joborder .input-section #final-input10{
+    width: 35%;
+}
+#bottom-table{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.final-table{
+    margin: 0;
+}
+    #FT1{
+        width: 20%;
+        border-right: solid 2px black;
+    }
+    #FT2{
+        width: 40%;
+    }
+    #FT3{
+        width: 20%;
+        border-left: solid 2px black;
+    }
+.final-select{
+    height: 40px;
+    border-radius: 50px;
+    background-color: transparent;
+    padding-left: 10px;
+}
+    #FS2{
+        width: 35%;
+        margin: 0px 20px;
+        padding-left: 20px;
+    }
+    #FS3, #FS1{
+        width: 15%;
+        border: solid 1px black;
+        background-color: transparent;
+        height: 19px;
+        position: relative;
+        top: 8px;
+    }
+    #fa-add{
+        font-size: 40px;
+        color: var(--emerald);
+        cursor: pointer;
+        transition: ease 0.4s;
+        border-radius: 50%;
+    }
+    #fa-minus{
+        font-size: 40px;
+        color: var(--carrot);
+        cursor: pointer;
+        transition: ease 0.4s;
+        border-radius: 50%;
+        display: none;
+    }
+    #fa-add:hover, #fa-minus:hover{
+        transform: scale(1.3);
+        box-shadow: var(--light-shadow);
+    }
+.materials{
+    margin-bottom: 20px;
+}
+#final-bottom-part1, #final-bottom-part2, #final-bottom-part3{
+    text-align: right;
+    margin-right: 30%;
+    font-weight: 700;
+}
+#final-bottom-part4{
+    text-align: left;
+    font-weight: 700;
+    margin-left: 25%;
+}
+
+
+/* Official Receipt */
+#reciept-heading img{
+    margin-left: 20px;
+    margin-top: 20px;
+}
+#reciept-heading div{
+    margin-right: 20px;
+    /* margin-top: 20px; */
+    text-align: right;
+}
+#reciept-heading2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+}
+#reciept-heading2 h5{
+    font-size: 30px;
+}
+#reciept-heading2 #reciept-jon{
+    margin: 0;
+    position: absolute;
+    transform: translate(120%, 0%);
+    display: flex;
+    flex-direction: row;
+
+}
+
+#official-reciept label{
+    font-size: 20px;
+}
+
+#sketch-section{
+    width: 100%;
+    display: grid;
+    place-items: center;
+}
+#sketch{
+    height: 200px;
+    width: 80%;
+    border: solid 1px black;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}   
+#jon-input{
+    border: none;
+    background-color: transparent;
+    border-bottom: solid 1px white;
+    width: 150px;
+    color: white;
+}
+.reciept-table{
+    display: grid;
+    place-items: center;
+    width: 100%;
+    table-layout: fixed;
+}
+#material-table{
+    width: 80%;
+    border-collapse: collapse;
+    color: var(--dark-blue);
+    
+}
+#material-table th{
+    color: var(--white);
+    background-color: var(--dark-blue);
+}
+#material-table td{
+    height: 10px;
+}
+#official-reciept section{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.reciept-input{
+    margin: 0px 10px;
+    border-bottom: solid 1px black;
+}
+#RI1, #RI3{
+    width: 45%;
+}
+#RI2, #RI4{
+    width: 20%;
+}
+#RI5, #RI6{
+    width: 30%;
+}
+#RI7, #RI8, #RI9, #RI10{
+    width: 32%;
+}
+#RI11, #RI12{
+    width: 22%;
+}
+#RI13{
+    width: 70%;
+}
+#RI14, #RI15, #RI16, #RI17, #RI18{
+    width: 20%;
+}
+section h3{
+    margin: 0;
+}
+.reciept-bottom{
+    /* position: relative;
+    padding-left: 50%; */
+    width: 100%;
+    /* background-color: var(--light-blue); */
+    display: flex;
+}
+
+/* Job order search
+.search-joborder{
+    height: 40%;
+    width: 70%;
+    background-color: var(--white);
+    box-shadow: var(--light-shadow);
+}
+.search-joborder .heading{
+    height: 100px;
+}
+.search-joborder .heading input{
+    height: 50px;
+    width: 500px;
+    border-radius: 25px;
+    border: none;
+    padding-left: 20px;
+}
+.search-joborder .heading input::placeholder{
+    font-size: 15px;
+}
+
+.search-joborder .heading .search-button{
+    height: 53px;
+    background-color: var(--emerald);
+    border: none;
+    width: 150px;
+    color: var(--white);
+    border-radius: 50px;
+    font-size: 20px;
+    margin-left: 20px;
+    cursor: pointer;
+    transition: ease 0.4s;
+}
+.search-joborder .heading .search-button:hover{
+    transform: scale(1.1);
+    background-color: var(--nephritis);
+    box-shadow: var(--light-shadow);
+} */
+
+
+
+
+/* POPUPS */
+.error{
+    visibility: hidden;
+    width: 160px;
+    background-color: var(--dark-blue);
+    color: var(--white);
+    text-align: center;
+    border-radius: 5px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    transform: translate(-30%,-80%);
+    cursor: pointer;
+    /* animation: fade-out 4s; */
+    /* animation-fill-mode: forwards; */
+}
+    /* #error1{
+        transform: translate(-30%,-80%);
+    } */
+
+.error::after{
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+
+
+
+/* Animations */
+@keyframes zoom{
+    from{
+        transform: scale(0);
+    }
+    to{
+        transform: scale(1);
+    }
+}
+@keyframes topslide {
+    from{
+        top: -300px;
+        opacity: 0;
+    }
+    to{
+        top: 0;
+        opacity: 1;
+    }
+}
+@keyframes fade-out{
+    0%{
+        opacity: 1;
+    }
+    25%{
+        opacity: 1;
+    }
+    50%{
+        opacity: 1;
+    }
+    75%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+}

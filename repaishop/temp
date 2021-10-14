@@ -1,0 +1,28 @@
+name
+date
+address
+number
+device_type
+accessories
+model_number
+brand_name
+serial_number
+complain
+warranty
+type_of_repair
+
+Findings
+Materials
+Check_up
+Labor
+Total
+
+
+TRUNCATE TABLE `employee`
+
+UPDATE `joborder` SET `Name` = 'Cooper Rahman', `Address` = 'Daet, CN', `Number` = '09123456789', `Accessories` = 'none', `Model_Number` = '777888999', `Brand_Name` = 'TCL', `Serial_Number` = '888777', `Complain` = 'not properly working' WHERE `joborder`.`JON` = 2;
+
+INSERT INTO `inventory_logs` (`Product_Name`, `Product_Number`, `Debit`, `Credit`, `Price`, `Quantity`) VALUES ('bolt', '1', '12', NULL, '60', '112');
+
+date stock description toadd tosubtract amount
+date productName productNo debit credit amount stock
